@@ -1,18 +1,81 @@
 # To-do-App
-```eof 
-```markdown:README.md 
-# Hướng dẫn Fix lỗi API trên Vercel Chào bạn, để tính năng AI Gemini có thể hoạt động trên Vercel, chúng ta cần cung cấp API Key một cách an toàn. Hãy làm theo các bước dưới đây. 
-### Tại sao cần thay đổi? Dự án của bạn giờ đây cần một "bước build" để Vercel có thể đưa API Key (được lưu bí mật) vào code của bạn trước khi xuất bản trang web. Chúng ta sẽ dùng một công cụ rất nhẹ nhàng tên là `Vite` để làm việc này. 
---- 
-### Bước 1: Lấy API Key của bạn 
-1.  Truy cập **Google AI Studio**: [https://aistudio.google.com/](https://aistudio.google.com/) 
-2.  Đăng nhập bằng tài khoản Google của bạn. 
-3.  Nhấp vào **"Get API key"** -> **"Create API key in new project"**. 
-4.  Sao chép (copy) chuỗi API Key vừa hiện ra. **Hãy giữ nó cẩn thận như mật khẩu!** 
---- 
-### Bước 2: Cập nhật dự án trên GitHub Bây giờ, bạn cần cập nhật lại cấu trúc dự án trên GitHub. 
-1.  **Xóa file cũ:** Xóa file `index.html` (hoặc `todo_app.html`) cũ khỏi repository của bạn trên GitHub. 
-2.  **Tải các file mới lên:** Tải 3 file mình vừa gửi (`package.json`, `index.html`, `main.js`) lên repository. 
-Sau bước này, repository của bạn sẽ có 3 file mới này. 
---- 
-### Bước 3: Cấu hình trên Vercel Đây là bước quan trọng nhất. 1.  **Truy cập Vercel:** Mở dự án của bạn trên Vercel. 2.  Vào tab **"Settings"** -> **"Environment Variables"**. 3.  Tạo một biến mới với thông tin sau: * **Name:** `VITE_GEMINI_API_KEY` (Phải viết chính xác y hệt thế này). * **Value:** Dán (paste) API Key bạn đã lấy từ Google AI Studio ở Bước 1 vào đây. * Nhấn **Save**. 4.  **Thay đổi Framework Preset:** * Vẫn trong tab **"Settings"**, vào phần **"General"**. * Tìm đến mục **"Framework Preset"**. * Chọn nó và tìm **"Vite"** trong danh sách. * Nhấn **Save**. --- ### Bước 4: Deploy lại 1.  Vào tab **"Deployments"** trong dự án Vercel của bạn. 2.  Nhấn vào menu ba chấm `...` ở deployment mới nhất và chọn **"Redeploy"**. 3.  Vercel sẽ build lại dự án của bạn với cấu hình Vite và biến môi trường mới. Sau khi Vercel build xong, hãy truy cập lại trang web của bạn. Tính năng AI Gemini sẽ hoạt động! Chúc mừng bạn đã hoàn thành một bước nâng cấp rất chuyên nghiệp cho dự án của mình!
+# Ứng dụng To-Do List Thông minh (AI-Powered To-Do App)
+
+Một ứng dụng quản lý công việc hiện đại được xây dựng bằng HTML, CSS và JavaScript thuần, tích hợp sức mạnh của AI để giúp bạn lập kế hoạch hiệu quả hơn.
+
+[![Deployed on Vercel](https://vercel.com/button)](https://your-app-name.vercel.app/) 
+
+---
+
+## ## Giới thiệu
+
+Đây là một dự án ứng dụng quản lý công việc (To-Do List) được xây dựng từ đầu. Không chỉ dừng lại ở các chức năng cơ bản, ứng dụng được trang bị nhiều tính năng nâng cao như chế độ tối, thống kê năng suất, và đặc biệt là **trợ lý AI (sử dụng Gemini API)** để tự động chia nhỏ các công việc phức tạp, giúp bạn dễ dàng quản lý và thực hiện các dự án lớn.
+
+Dự án này là minh chứng cho việc xây dựng một ứng dụng front-end đầy đủ tính năng mà không cần đến các framework phức tạp.
+
+---
+
+## ## Các tính năng nổi bật 🚀
+
+* **Quản lý công việc cơ bản:** Thêm, [nhấp đúp để sửa](https://user-images.githubusercontent.com/assets/32223/120485971-5387b333-e18c-474c-87d9-052431057c32.gif), xóa, và đánh dấu hoàn thành công việc.
+* **Giao diện hiện đại:** Thiết kế sạch sẽ, responsive với các hiệu ứng chuyển động mượt mà.
+* **Chế độ Sáng/Tối (Light/Dark Mode):** Tự động lưu lại lựa chọn của bạn để có trải nghiệm tốt nhất.
+* **Chuỗi ngày hoạt động (Streak):** Theo dõi số ngày bạn hoạt động liên tiếp để tạo động lực.
+* **Quản lý nâng cao:**
+    * **Mức độ ưu tiên:** Phân loại công việc với 3 cấp độ (Cao, Trung bình, Thấp) qua các viền màu.
+    * **Ngày hết hạn (Due Date):** Đặt hạn chót cho công việc và nhận cảnh báo trực quan khi quá hạn.
+* **Lọc công việc:** Dễ dàng xem công việc theo trạng thái (Tất cả, Đang làm, Đã hoàn thành).
+* **✨ Trợ lý AI (Gemini API):** Nhập một công việc lớn và để AI tự động chia nó thành các bước nhỏ hơn, dễ quản lý hơn.
+* **Bảng thống kê:** Xem báo cáo trực quan về tổng số việc đã làm, chuỗi ngày kỷ lục và biểu đồ năng suất 7 ngày qua.
+* **Lưu trữ cục bộ:** Mọi dữ liệu của bạn được lưu an toàn ngay trên trình duyệt bằng `localStorage`.
+
+---
+
+## ## Công nghệ sử dụng 🛠️
+
+* **HTML5**
+* **CSS3** (với [**Tailwind CSS**](https://tailwindcss.com/))
+* **JavaScript (ES6+)**
+* **[Vite](https://vitejs.dev/)** làm công cụ build và server phát triển.
+* **[Google Gemini API](https://ai.google.dev/)** cho tính năng AI.
+
+---
+
+## ## Chạy dự án ở local
+
+Bạn có thể chạy dự án này trên máy của mình bằng cách làm theo các bước sau:
+
+1.  **Clone repository này về máy:**
+    ```bash
+    git clone [https://github.com/your-username/your-repo-name.git](https://github.com/your-username/your-repo-name.git)
+    ```
+
+2.  **Di chuyển vào thư mục dự án:**
+    ```bash
+    cd your-repo-name
+    ```
+
+3.  **Cài đặt các dependencies:**
+    ```bash
+    npm install
+    ```
+
+4.  **Tạo file biến môi trường:**
+    * Tạo một file mới ở thư mục gốc của dự án tên là `.env.local`
+    * Thêm API Key của bạn vào file này theo cú pháp:
+        ```
+        VITE_GEMINI_API_KEY=YOUR_API_KEY_HERE
+        ```
+        *(Bạn có thể lấy API Key từ [Google AI Studio](https://aistudio.google.com/))*
+
+5.  **Chạy server phát triển:**
+    ```bash
+    npm run dev
+    ```
+    Mở trình duyệt và truy cập vào địa chỉ `http://localhost:5173` (hoặc một port khác được hiển thị trên terminal).
+
+---
+
+## ## Tác giả
+
+Được phát triển với ❤️ bởi **Phan Vinh**.
