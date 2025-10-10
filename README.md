@@ -41,7 +41,7 @@ Dự án này là minh chứng cho việc xây dựng một ứng dụng front-e
 
 ---
 
-## ## Chạy dự án ở local
+## Chạy dự án ở local
 
 Bạn có thể chạy dự án này trên máy của mình bằng cách làm theo các bước sau:
 
