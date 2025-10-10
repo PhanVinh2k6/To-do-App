@@ -17,7 +17,7 @@ Dự án này là minh chứng cho việc xây dựng một ứng dụng front-e
 
 ## ## Các tính năng nổi bật 🚀
 
-* **Quản lý công việc cơ bản:** Thêm, [nhấp đúp để sửa](https://user-images.githubusercontent.com/assets/32223/120485971-5387b333-e18c-474c-87d9-052431057c32.gif), xóa, và đánh dấu hoàn thành công việc.
+* **Quản lý công việc cơ bản:** Thêm, [nhấp đúp để sửa], xóa, và đánh dấu hoàn thành công việc.
 * **Giao diện hiện đại:** Thiết kế sạch sẽ, responsive với các hiệu ứng chuyển động mượt mà.
 * **Chế độ Sáng/Tối (Light/Dark Mode):** Tự động lưu lại lựa chọn của bạn để có trải nghiệm tốt nhất.
 * **Chuỗi ngày hoạt động (Streak):** Theo dõi số ngày bạn hoạt động liên tiếp để tạo động lực.
@@ -47,7 +47,7 @@ Bạn có thể chạy dự án này trên máy của mình bằng cách làm th
 
 1.  **Clone repository này về máy:**
     ```bash
-    git clone [https://github.com/your-username/your-repo-name.git](https://github.com/your-username/your-repo-name.git)
+    git clone [https://github.com/PhanVinh2k6/To-do-App.git](https://github.com/PhanVinh2k6/To-do-App.git)
     ```
 
 2.  **Di chuyển vào thư mục dự án:**
