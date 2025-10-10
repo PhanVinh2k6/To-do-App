@@ -7,7 +7,7 @@ Một ứng dụng quản lý công việc hiện đại được xây dựng b�
 
 ---
 
-## ## Giới thiệu
+## Giới thiệu
 
 Đây là một dự án ứng dụng quản lý công việc (To-Do List) được xây dựng từ đầu. Không chỉ dừng lại ở các chức năng cơ bản, ứng dụng được trang bị nhiều tính năng nâng cao như chế độ tối, thống kê năng suất, và đặc biệt là **trợ lý AI (sử dụng Gemini API)** để tự động chia nhỏ các công việc phức tạp, giúp bạn dễ dàng quản lý và thực hiện các dự án lớn.
 
@@ -15,7 +15,7 @@ Dự án này là minh chứng cho việc xây dựng một ứng dụng front-e
 
 ---
 
-## ## Các tính năng nổi bật 🚀
+## Các tính năng nổi bật 🚀
 
 * **Quản lý công việc cơ bản:** Thêm, [nhấp đúp để sửa], xóa, và đánh dấu hoàn thành công việc.
 * **Giao diện hiện đại:** Thiết kế sạch sẽ, responsive với các hiệu ứng chuyển động mượt mà.
@@ -31,7 +31,7 @@ Dự án này là minh chứng cho việc xây dựng một ứng dụng front-e
 
 ---
 
-## ## Công nghệ sử dụng 🛠️
+## Công nghệ sử dụng 🛠️
 
 * **HTML5**
 * **CSS3** (với [**Tailwind CSS**](https://tailwindcss.com/))
@@ -76,6 +76,6 @@ Bạn có thể chạy dự án này trên máy của mình bằng cách làm th
 
 ---
 
-## ## Tác giả
+## Tác giả
 
-Được phát triển với ❤️ bởi **Phan Vinh**.
+Được phát triển bởi **Phan Hà Thái Vinh❤️**.
