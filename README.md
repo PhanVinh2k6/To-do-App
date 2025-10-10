@@ -47,7 +47,7 @@ Bạn có thể chạy dự án này trên máy của mình bằng cách làm th
 
 1.  **Clone repository này về máy:**
     ```bash
-    git clone [https://github.com/PhanVinh2k6/To-do-App.git](https://github.com/PhanVinh2k6/To-do-App.git)
+    git clone https://github.com/PhanVinh2k6/To-do-App.git
     ```
 
 2.  **Di chuyển vào thư mục dự án:**
