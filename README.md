@@ -25,13 +25,13 @@ Dự án này là minh chứng cho việc xây dựng một ứng dụng front-e
     * **Mức độ ưu tiên:** Phân loại công việc với 3 cấp độ (Cao, Trung bình, Thấp) qua các viền màu.
     * **Ngày hết hạn (Due Date):** Đặt hạn chót cho công việc và nhận cảnh báo trực quan khi quá hạn.
 * **Lọc công việc:** Dễ dàng xem công việc theo trạng thái (Tất cả, Đang làm, Đã hoàn thành).
-* **✨ Trợ lý AI (Gemini API):** Nhập một công việc lớn và để AI tự động chia nó thành các bước nhỏ hơn, dễ quản lý hơn.
+* **Trợ lý AI (Gemini API):** Nhập một công việc lớn và để AI tự động chia nó thành các bước nhỏ hơn, dễ quản lý hơn.
 * **Bảng thống kê:** Xem báo cáo trực quan về tổng số việc đã làm, chuỗi ngày kỷ lục và biểu đồ năng suất 7 ngày qua.
 * **Lưu trữ cục bộ:** Mọi dữ liệu của bạn được lưu an toàn ngay trên trình duyệt bằng `localStorage`.
 
 ---
 
-## Công nghệ sử dụng 🛠️
+## Công nghệ sử dụng 
 
 * **HTML5**
 * **CSS3** (với [**Tailwind CSS**](https://tailwindcss.com/))
@@ -52,7 +52,7 @@ Bạn có thể chạy dự án này trên máy của mình bằng cách làm th
 
 2.  **Di chuyển vào thư mục dự án:**
     ```bash
-    cd your-repo-name
+    cd To-do-App
     ```
 
 3.  **Cài đặt các dependencies:**
