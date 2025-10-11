@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
         input.disabled = true;
 
         try {
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${AIzaSyDJHebf_3pfWEnTg6t3E4ql2AEn5vFHjQA}`;
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${APIKey}`;
             const systemPrompt = "Bạn là một trợ lý quản lý dự án xuất sắc. Khi nhận được một công việc hoặc dự án lớn, hãy chia nhỏ nó thành các công việc con cụ thể, có thể hành động ngay. Chỉ trả về một đối tượng JSON có chứa một mảng các chuỗi ký tự (string) với key là 'tasks'.";
 
             const payload = {
