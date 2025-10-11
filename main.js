@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const geminiBtn = document.getElementById('gemini-btn');
     const geminiIcon = document.getElementById('gemini-icon');
     const geminiSpinner = document.getElementById('gemini-spinner');
+    const animatedTitle = document.getElementById('animated-title');
 
     // --- State Variables ---
     let errorTimeout;
@@ -48,6 +49,19 @@ document.addEventListener('DOMContentLoaded', () => {
             errorMessage.classList.add('opacity-0');
         }, 3000);
     };
+    
+    // --- Title Animation ---
+    const animateTitle = () => {
+        const text = "To-Do List";
+        animatedTitle.innerHTML = ''; // Clear existing content
+        text.split('').forEach((char, i) => {
+            const span = document.createElement('span');
+            span.textContent = (char === ' ') ? '\u00A0' : char;
+            // Stagger the animation delay for each character
+            span.style.animationDelay = `${i * 0.05}s`;
+            animatedTitle.appendChild(span);
+        });
+    };
 
     // --- Gemini API Logic ---
     const handleGeminiSplit = async () => {
@@ -57,7 +71,6 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // IMPORTANT: Access the Environment Variable from Vite
         const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
         if (!apiKey) {
             showError("API Key chưa được cấu hình. Hãy xem file README.md.");
@@ -71,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
         input.disabled = true;
 
         try {
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${apiKey}`;
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${AIzaSyDJHebf_3pfWEnTg6t3E4ql2AEn5vFHjQA}`;
             const systemPrompt = "Bạn là một trợ lý quản lý dự án xuất sắc. Khi nhận được một công việc hoặc dự án lớn, hãy chia nhỏ nó thành các công việc con cụ thể, có thể hành động ngay. Chỉ trả về một đối tượng JSON có chứa một mảng các chuỗi ký tự (string) với key là 'tasks'.";
 
             const payload = {
@@ -115,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
             showError("Đã có lỗi xảy ra với trợ lý AI. Vui lòng thử lại sau.");
         } finally {
             geminiIcon.classList.remove('hidden');
-            geminiSpinner.classList.add('hidden');
+            geminiSpinner.add('hidden');
             geminiBtn.disabled = false;
             form.querySelector('button[type="submit"]').disabled = false;
             input.disabled = false;
@@ -123,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     geminiBtn.addEventListener('click', handleGeminiSplit);
 
-    // --- Dark Mode, Streak, and other logics remain the same ---
+    // --- Dark Mode Logic ---
     const updateThemeIcons = () => {
         if (document.documentElement.classList.contains('dark')) {
             lightIcon.classList.add('hidden'); darkIcon.classList.remove('hidden');
@@ -137,6 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
         updateThemeIcons();
     });
 
+    // --- Streak Logic ---
     const renderStreak = () => { streakCountSpan.textContent = streakData.count; };
     const triggerStreakAnimation = () => {
         streakCounterDiv.classList.remove('pop-animation');
@@ -168,6 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
     
+    // --- Task Rendering Logic ---
     const renderTasks = () => {
         let filteredTasks = tasks;
         if (currentFilter === 'active') filteredTasks = tasks.filter(t => !t.completed);
@@ -179,7 +194,8 @@ document.addEventListener('DOMContentLoaded', () => {
         filteredTasks.forEach(task => {
             const taskItem = document.createElement('div');
             const priorityClass = `task-p-${task.priority || 'medium'}`;
-            taskItem.className = `task-item flex items-center justify-between p-3 pl-4 bg-gray-50 dark:bg-gray-700/50 rounded-lg border-l-4 dark:border-gray-700 transition-all duration-300 ${task.completed ? 'completed' : ''} ${priorityClass}`;
+            taskItem.className = `task-item flex items-center justify-between p-3 pl-4 rounded-lg border-l-4 transition-all duration-300 ${task.completed ? 'completed' : ''} ${priorityClass}`;
+            taskItem.style.backgroundColor = 'var(--color-bg)';
             taskItem.dataset.id = task.id;
 
             let dueDateHTML = '';
@@ -194,18 +210,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
             taskItem.innerHTML = `
                 <div class="flex items-center gap-3 flex-grow min-w-0">
-                    <input type="checkbox" ${task.completed ? 'checked' : ''} class="w-5 h-5 text-blue-500 rounded border-gray-300 dark:border-gray-500 focus:ring-blue-500 dark:bg-gray-600 cursor-pointer flex-shrink-0">
+                    <input type="checkbox" ${task.completed ? 'checked' : ''} class="w-5 h-5 rounded border-gray-300 dark:border-gray-500 focus:ring-0 cursor-pointer flex-shrink-0" style="color: var(--color-accent)">
                     <div class="flex-grow">
-                        <span class="text-gray-700 dark:text-gray-200" data-action="edit">${escapeHTML(task.text)}</span>
+                        <span class="text-base" data-action="edit" style="color: var(--color-text-primary)">${escapeHTML(task.text)}</span>
                         ${dueDateHTML}
                     </div>
                 </div>
                 <div class="flex items-center gap-2 ml-2 flex-shrink-0">
                     <button class="task-action-btn" data-action="priority">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" class="${priorityClass === 'task-p-high' ? 'text-red-500' : (priorityClass === 'task-p-medium' ? 'text-amber-500' : 'text-green-500')}"><path d="M14.4 6 14 4H5v17h2v-7h5.6l.4 2h7V6z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" class="${priorityClass === 'task-p-high' ? 'text-red-500' : (priorityClass === 'task-p-medium' ? 'text-amber-500' : 'text-teal-400')}"><path d="M14.4 6 14 4H5v17h2v-7h5.6l.4 2h7V6z"/></svg>
                     </button>
                      <button class="task-action-btn relative" data-action="date">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-gray-400 hover:text-blue-500"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-gray-400 hover:text-[var(--color-accent)]"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
                         <input type="date" class="absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer" data-action="date-input" value="${task.dueDate || ''}"/>
                     </button>
                     <button class="delete-btn text-gray-400 hover:text-red-500 transition-colors">
@@ -216,6 +232,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
     
+    // --- Event Listeners ---
     form.addEventListener('submit', (e) => {
         e.preventDefault();
         if (input.value.trim()) {
@@ -289,7 +306,8 @@ document.addEventListener('DOMContentLoaded', () => {
             renderTasks();
         }
     });
-
+    
+    // --- Stats Modal Logic ---
     const renderStats = () => {
         document.getElementById('stats-completed').textContent = tasks.filter(t => t.completed).length;
         document.getElementById('stats-current-streak').textContent = `${streakData.count} ngày`;
@@ -308,7 +326,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const maxCount = Math.max(...weeklyData.map(d => d.count), 1);
         weeklyData.forEach(data => {
             const barHeight = (data.count / maxCount * 100) + '%';
-            chart.innerHTML += `<div class="flex flex-col items-center justify-end h-full w-full"><div class="text-xs font-bold text-gray-700 dark:text-gray-200">${data.count}</div><div class="w-3/4 bg-blue-300 dark:bg-blue-600 rounded-t-sm" style="height: ${barHeight}"></div><div class="text-xs text-gray-500 dark:text-gray-400 mt-1">${data.day}</div></div>`;
+            chart.innerHTML += `<div class="flex flex-col items-center justify-end h-full w-full"><div class="text-xs font-bold" style="color: var(--color-text-primary)">${data.count}</div><div class="w-3/4 rounded-t-sm" style="height: ${barHeight}; background-color: var(--color-accent)"></div><div class="text-xs mt-1" style="color: var(--color-text-secondary)">${data.day}</div></div>`;
         });
     };
 
@@ -333,4 +351,5 @@ document.addEventListener('DOMContentLoaded', () => {
     checkStreakOnLoad();
     renderStreak();
     renderTasks();
+    animateTitle();
 });
